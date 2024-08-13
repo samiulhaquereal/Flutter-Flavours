@@ -11,7 +11,8 @@ abstract class AppEnvironment {
 
   static Environment get environment => _environment;
 
-  static setupEnv(Environment env) {
+  static void setupEnv(Environment env) {
+    _environment = env; // Initialize _environment here
     switch (env) {
       case Environment.dev:
         {
@@ -28,5 +29,4 @@ abstract class AppEnvironment {
       }
     }
   }
-
 }
