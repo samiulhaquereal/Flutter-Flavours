@@ -1,16 +1,51 @@
-# flutterflavorpractice
 
-A new Flutter project.
 
-## Getting Started
+## Configure
+<p>Go build.gradle and paste it under buildTypes .</p>
 
-This project is a starting point for a Flutter application.
+```
+flavorDimensions "default"
+    productFlavors {
+        dev {
+            dimension "default"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+            resValue "string", "app_name", "flavors-dev"
+        }
+        prod {
+            dimension "default"
+            resValue "string", "app_name", "flavors"
+        }
+    }
 
-A few resources to get you started if this is your first Flutter project:
+```
+<p>For change app name go to Manifest.xml and change it.</p>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+android:label="@string/app_name"
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+
+### For production Flavor
+
+```
+flutter build appbundle --flavor prod -t lib/src/config/flavors/main_prod.dart
+
+```
+
+```
+flutter run --flavor prod -t lib/src/config/flavors/main_prod.dart
+
+```
+
+### For development Flavor
+
+```
+flutter build appbundle --flavor prod -t lib/src/config/flavors/main_dev.dart
+
+```
+
+```
+flutter run --flavor prod -t lib/src/config/flavors/main_dev.dart
+
+```
